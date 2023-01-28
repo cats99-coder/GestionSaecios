@@ -2,19 +2,12 @@ import { Module } from '@nestjs/common';
 import { SaeciosController } from './saecios.controller';
 import { SaeciosService } from './saecios.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Saecio } from './entities/saecio.entity';
+import { Saecio, SaecioSchema } from './entities/saecio.entity';
+import { MongooseModule } from '@nestjs/mongoose/dist';
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mongodb',
-      host: '127.0.0.1',
-      port: 27017,
-      database: 'hiberus',
-      entities: [Saecio],
-      synchronize: true,
-      useUnifiedTopology: true
-    }),
-    TypeOrmModule.forFeature([Saecio])
+    MongooseModule.forRoot('mongodb://127.0.0.1/hiberus'),
+    MongooseModule.forFeature([{ name: 'saecio', schema: SaecioSchema }]),
   ],
   controllers: [SaeciosController],
   providers: [SaeciosService],

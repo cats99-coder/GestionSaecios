@@ -1,25 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Saecio } from './entities/saecio.entity';
+import { InjectModel } from '@nestjs/mongoose/dist';
+import { Model } from 'mongoose';
+import { Saecio, SaecioDocument } from './entities/saecio.entity';
 @Injectable()
 export class SaeciosService {
   constructor(
-    @InjectRepository(Saecio) private saecioRepository: Repository<Saecio>,
+    @InjectModel('saecio') private saecioModel: Model<SaecioDocument>,
   ) {}
   async findAll(): Promise<Saecio[]> {
-    return this.saecioRepository.find();
+    return this.saecioModel.find();
   }
   async findOneById(_id): Promise<Saecio> {
-    return this.saecioRepository.findOne(_id);
+    return this.saecioModel.findOne(_id);
   }
   async create(saecio): Promise<Saecio> {
-    return this.saecioRepository.save(saecio);
+    return this.saecioModel.create(saecio);
   }
   async update(_id, saecio) {
-    this.saecioRepository.update(_id, saecio);
+    this.saecioModel.update(_id, saecio);
   }
   async delete(_id): Promise<any> {
-    return this.saecioRepository.delete(_id);
+    return this.saecioModel.deleteOne(_id);
   }
 }

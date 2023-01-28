@@ -27,6 +27,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/saecios/tsconfig.app.json"
       }
+    },
+    "productos": {
+      "type": "application",
+      "root": "apps/productos",
+      "entryFile": "main",
+      "sourceRoot": "apps/productos/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/productos/tsconfig.app.json"
+      }
     }
   }
 }

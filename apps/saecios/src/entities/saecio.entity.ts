@@ -1,19 +1,22 @@
-import { Entity, Column, PrimaryGeneratedColumn, ObjectIdColumn } from 'typeorm';
+import { Schema } from "@nestjs/mongoose";
+import { Prop, SchemaFactory } from "@nestjs/mongoose/dist";
+import { HydratedDocument } from "mongoose";
 
-@Entity()
+
+export type SaecioDocument = HydratedDocument<Saecio>
+@Schema()
 export class Saecio {
-  @ObjectIdColumn()
-  _id: string;
-
-  @Column({})
+  @Prop()
   nombre: string;
 
-  @Column()
+  @Prop()
   apellido1: string;
 
-  @Column()
+  @Prop()
   apellido2: string;
 
-  @Column({unique: true})
+  @Prop({unique: true})
   email: string
 }
+
+export const SaecioSchema = SchemaFactory.createForClass(Saecio)
