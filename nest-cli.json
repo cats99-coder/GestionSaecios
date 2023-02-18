@@ -36,6 +36,33 @@
       "compilerOptions": {
         "tsConfigPath": "apps/productos/tsconfig.app.json"
       }
+    },
+    "pagos": {
+      "type": "application",
+      "root": "apps/pagos",
+      "entryFile": "main",
+      "sourceRoot": "apps/pagos/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/pagos/tsconfig.app.json"
+      }
+    },
+    "gastos": {
+      "type": "application",
+      "root": "apps/gastos",
+      "entryFile": "main",
+      "sourceRoot": "apps/gastos/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/gastos/tsconfig.app.json"
+      }
+    },
+    "metodos-pago": {
+      "type": "application",
+      "root": "apps/metodos-pago",
+      "entryFile": "main",
+      "sourceRoot": "apps/metodos-pago/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/metodos-pago/tsconfig.app.json"
+      }
     }
   }
 }

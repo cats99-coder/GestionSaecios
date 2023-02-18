@@ -12,15 +12,15 @@ export class ProductosService {
     return this.productoModel.find().populate('grupo');
   }
   async findOneById(_id): Promise<Producto> {
-    return this.productoModel.findOne(_id);
+    return this.productoModel.findById(_id);
   }
   async create(producto): Promise<Producto> {
     return this.productoModel.create(producto);
   }
   async update(_id, producto) {
-    this.productoModel.updateOne(_id, producto);
+    return this.productoModel.updateOne({ _id }, producto);
   }
   async delete(_id): Promise<any> {
-    return this.productoModel.deleteOne(_id);
+    return this.productoModel.findByIdAndDelete(_id);
   }
 }

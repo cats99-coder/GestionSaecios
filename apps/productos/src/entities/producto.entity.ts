@@ -10,9 +10,6 @@ export class Producto {
   @Prop({ unique: true })
   nombre: string;
 
-  @Prop({ default: 0 })
-  precio: number;
-
   @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'grupo-producto'})
   grupo: Grupo;
 }
