@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
-    "dev": "concurrently \"nest start --watch api\" \"nest start --watch saecios\" \"nest start --watch productos\"",
+    "dev": "concurrently \"nest start --watch api\" \"nest start --watch saecios\" \"nest start --watch productos\" \"nest start --watch pagos\" \"nest start --watch gastos\" \"nest start --watch metodos-pago\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",

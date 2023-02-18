@@ -21,6 +21,6 @@ export class GruposService {
     this.grupoModel.updateOne(_id, grupo);
   }
   async delete(_id): Promise<any> {
-    return this.grupoModel.deleteOne(_id);
+    return this.grupoModel.findByIdAndDelete(_id);
   }
 }

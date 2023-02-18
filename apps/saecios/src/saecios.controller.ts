@@ -25,4 +25,8 @@ export class SaeciosController {
   async delete(_id) {
     return this.saeciosService.delete(_id);
   }
+  @MessagePattern('saecios_populate')
+  async populate(saecios) {
+    return this.saeciosService.populate(saecios);
+  }
 }

@@ -20,7 +20,7 @@ export class ProductosController {
   }
   @MessagePattern('productos_update')
   async update(data) {
-    return this.productosService.update(data._id, data.saecio);
+    return this.productosService.update(data._id, data.producto);
   }
   @MessagePattern('productos_delete')
   async delete(_id) {
