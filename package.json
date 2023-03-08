@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
-    "dev": "concurrently \"nest start --watch api\" \"nest start --watch saecios\" \"nest start --watch productos\" \"nest start --watch pagos\" \"nest start --watch gastos\" \"nest start --watch metodos-pago\"",
+    "dev": "concurrently \"nest start --watch api\" \"nest start --watch saecios\" \"nest start --watch productos\" \"nest start --watch pagos\" \"nest start --watch gastos\" \"nest start --watch metodos-pago\" \"nest start --watch reportes\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -27,7 +27,9 @@
     "@nestjs/mongoose": "^9.2.1",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^9.0.1",
+    "handlebars": "^4.7.7",
     "mongoose": "^6.8.4",
+    "puppeteer": "^19.7.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
     "typeorm": "^0.3.11"

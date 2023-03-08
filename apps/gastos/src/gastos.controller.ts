@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import {  MessagePattern } from '@nestjs/microservices';
+import { MessagePattern } from '@nestjs/microservices';
 import { GastosService } from './gastos.service';
 
 @Controller()
@@ -25,5 +25,13 @@ export class GastosController {
   @MessagePattern('gastos_delete')
   async delete(_id) {
     return this.gastosService.delete(_id);
+  }
+  @MessagePattern('proveedores_create')
+  async createProveedor(proveedor) {
+    return await this.gastosService.createProveedor(proveedor);
+  }
+  @MessagePattern('proveedores_findAll')
+  async findAllProveedor() {
+    return await this.gastosService.getProveedores();
   }
 }

@@ -1,9 +1,8 @@
-import { Schema } from "@nestjs/mongoose";
-import { Prop, SchemaFactory } from "@nestjs/mongoose/dist";
-import { HydratedDocument } from "mongoose";
+import { Schema } from '@nestjs/mongoose';
+import { Prop, SchemaFactory } from '@nestjs/mongoose/dist';
+import { HydratedDocument } from 'mongoose';
 
-
-export type SaecioDocument = HydratedDocument<Saecio>
+export type SaecioDocument = HydratedDocument<Saecio>;
 @Schema()
 export class Saecio {
   @Prop()
@@ -15,8 +14,8 @@ export class Saecio {
   @Prop()
   apellido2: string;
 
-  @Prop({unique: true})
-  email: string
+  @Prop({ unique: true })
+  email: string;
 }
 
-export const SaecioSchema = SchemaFactory.createForClass(Saecio)
+export const SaecioSchema = SchemaFactory.createForClass(Saecio);

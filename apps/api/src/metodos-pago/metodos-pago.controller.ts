@@ -1,9 +1,19 @@
-import { Body, Controller, Delete, Get, Inject, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Inject,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 
 @Controller('metodos-pago')
 export class MetodosPagoController {
-    constructor(@Inject('METODOS_PAGO_SERVICE') private metodosClient: ClientProxy) {}
+  constructor(
+    @Inject('METODOS_PAGO_SERVICE') private metodosClient: ClientProxy,
+  ) {}
   @Get()
   async findAll() {
     return this.metodosClient.send('metodos_pago_findAll', {});

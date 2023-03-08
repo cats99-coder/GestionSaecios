@@ -6,7 +6,7 @@ export type ProveedorDocument = HydratedDocument<Proveedor>;
 @Schema()
 export class Proveedor {
   @Prop({ unique: true, required: true })
-  nombre;
+  nombre: string;
 }
 
 export const ProveedorSchema = SchemaFactory.createForClass(Proveedor);

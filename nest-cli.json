@@ -63,6 +63,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/metodos-pago/tsconfig.app.json"
       }
+    },
+    "reportes": {
+      "type": "application",
+      "root": "apps/reportes",
+      "entryFile": "main",
+      "sourceRoot": "apps/reportes/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/reportes/tsconfig.app.json"
+      }
     }
   }
 }

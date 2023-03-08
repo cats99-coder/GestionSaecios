@@ -8,8 +8,8 @@ async function bootstrap() {
     {
       transport: Transport.TCP,
       options: {
-        port: 3003
-      }
+        port: 3003,
+      },
     },
   );
   await app.listen();

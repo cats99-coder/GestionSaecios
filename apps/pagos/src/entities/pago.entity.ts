@@ -1,11 +1,6 @@
 import { Schema, SchemaFactory, Prop } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
-import {
-  Bizum,
-  CuentaBancaria,
-  Efectivo,
-  MetodoPago,
-} from '../dto/metodosPago.dto';
+import { Bizum, CuentaBancaria, Efectivo } from '../dto/metodosPago.dto';
 
 import { Saecio } from '../dto/saecio.dto';
 
@@ -22,5 +17,7 @@ export class Pago {
   receptor: Saecio;
   @Prop({ type: mongoose.Schema.Types.ObjectId })
   metodo_pago: Bizum | CuentaBancaria | Efectivo;
+  @Prop()
+  fecha: Date;
 }
 export const PagoSchema = SchemaFactory.createForClass(Pago);

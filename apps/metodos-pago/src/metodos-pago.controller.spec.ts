@@ -11,7 +11,9 @@ describe('MetodosPagoController', () => {
       providers: [MetodosPagoService],
     }).compile();
 
-    metodosPagoController = app.get<MetodosPagoController>(MetodosPagoController);
+    metodosPagoController = app.get<MetodosPagoController>(
+      MetodosPagoController,
+    );
   });
 
   describe('root', () => {

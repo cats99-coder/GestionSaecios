@@ -1,9 +1,19 @@
-import { Body, Controller, Delete, Get, Inject, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Inject,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 
 @Controller('productos-grupos')
 export class GruposController {
-    constructor(@Inject('PRODUCTOS_SERVICE') private productosClient: ClientProxy) {}
+  constructor(
+    @Inject('PRODUCTOS_SERVICE') private productosClient: ClientProxy,
+  ) {}
   @Get()
   async findAll() {
     return this.productosClient.send('grupos_findAll', {});

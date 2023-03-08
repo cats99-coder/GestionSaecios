@@ -4,7 +4,9 @@ import { ClientProxy } from '@nestjs/microservices';
 
 @Controller('productos')
 export class ProductosController {
-  constructor(@Inject('PRODUCTOS_SERVICE') private productosClient: ClientProxy) {}
+  constructor(
+    @Inject('PRODUCTOS_SERVICE') private productosClient: ClientProxy,
+  ) {}
   @Get()
   async findAll() {
     return this.productosClient.send('productos_findAll', {});

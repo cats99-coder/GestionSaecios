@@ -11,6 +11,8 @@ export class MetodoPago {
   numero_telefono: string;
   @Prop()
   numero_cuenta: string;
+  @Prop()
+  nombre: string;
 }
 
 export const MetodoPagoSchema = SchemaFactory.createForClass(MetodoPago);

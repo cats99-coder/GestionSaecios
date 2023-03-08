@@ -6,7 +6,7 @@ import { Grupo } from '../entities/grupo.entity';
 @Injectable()
 export class GruposService {
   constructor(
-    @InjectModel('grupo-producto') private grupoModel: Model<Grupo>
+    @InjectModel('grupo-producto') private grupoModel: Model<Grupo>,
   ) {}
   async findAll(): Promise<Grupo[]> {
     return this.grupoModel.find();

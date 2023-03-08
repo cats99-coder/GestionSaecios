@@ -9,6 +9,7 @@ import { GruposController } from './productos/grupos/grupos.controller';
 import { PagosController } from './pagos/pagos.controller';
 import { MetodosPagoController } from './metodos-pago/metodos-pago.controller';
 import { GastosController } from './gastos/gastos.controller';
+import { ReportesController } from './reportes/reportes.controller';
 
 @Module({
   imports: [
@@ -48,9 +49,25 @@ import { GastosController } from './gastos/gastos.controller';
           port: 3006,
         },
       },
+      {
+        name: 'REPORTES_SERVICE',
+        transport: Transport.TCP,
+        options: {
+          port: 3007,
+        },
+      },
     ]),
   ],
-  controllers: [AppController, SaeciosController, ProductosController, GruposController, PagosController, MetodosPagoController, GastosController],
+  controllers: [
+    AppController,
+    SaeciosController,
+    ProductosController,
+    GruposController,
+    PagosController,
+    MetodosPagoController,
+    GastosController,
+    ReportesController,
+  ],
   providers: [AppService],
 })
 export class AppModule {}

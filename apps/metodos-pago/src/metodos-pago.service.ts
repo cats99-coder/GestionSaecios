@@ -6,7 +6,8 @@ import { MetodoPagoDocument, MetodoPago } from './entities/metodoPago.entity';
 @Injectable()
 export class MetodosPagoService {
   constructor(
-    @InjectModel('metodo-pago') private metodoPagoModel: Model<MetodoPagoDocument>,
+    @InjectModel('metodo-pago')
+    private metodoPagoModel: Model<MetodoPagoDocument>,
   ) {}
   async findAll() {
     return this.metodoPagoModel.find();
@@ -18,12 +19,12 @@ export class MetodosPagoService {
     return this.metodoPagoModel.create(metodoPago);
   }
   async update(_id, metodoPago) {
-    this.metodoPagoModel.updateOne(_id, metodoPago);
+    return this.metodoPagoModel.updateOne({ _id }, metodoPago);
   }
   async delete(_id): Promise<any> {
-    return this.metodoPagoModel.deleteOne(_id);
+    return this.metodoPagoModel.deleteOne({ _id });
   }
   async populate(metodos): Promise<any> {
-    return this.metodoPagoModel.populate(metodos, {path: 'metodo_pago'});
+    return this.metodoPagoModel.populate(metodos, { path: 'metodo_pago' });
   }
 }
