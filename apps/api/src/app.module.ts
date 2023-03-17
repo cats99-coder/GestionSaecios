@@ -10,6 +10,7 @@ import { PagosController } from './pagos/pagos.controller';
 import { MetodosPagoController } from './metodos-pago/metodos-pago.controller';
 import { GastosController } from './gastos/gastos.controller';
 import { ReportesController } from './reportes/reportes.controller';
+import { AuthController } from './auth/auth.controller';
 
 @Module({
   imports: [
@@ -56,6 +57,13 @@ import { ReportesController } from './reportes/reportes.controller';
           port: 3007,
         },
       },
+      {
+        name: 'AUTH_SERVICE',
+        transport: Transport.TCP,
+        options: {
+          port: 3008,
+        },
+      },
     ]),
   ],
   controllers: [
@@ -67,6 +75,7 @@ import { ReportesController } from './reportes/reportes.controller';
     MetodosPagoController,
     GastosController,
     ReportesController,
+    AuthController,
   ],
   providers: [AppService],
 })
