@@ -10,6 +10,9 @@ export class SaeciosService {
   async findAll(): Promise<Saecio[]> {
     return this.saecioModel.find();
   }
+  async findOneByEmail(email): Promise<Saecio> {
+    return this.saecioModel.findOne({ email: email });
+  }
   async findOneById(_id): Promise<Saecio> {
     return this.saecioModel.findById(_id);
   }

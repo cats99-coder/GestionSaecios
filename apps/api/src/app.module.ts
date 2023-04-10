@@ -11,57 +11,69 @@ import { MetodosPagoController } from './metodos-pago/metodos-pago.controller';
 import { GastosController } from './gastos/gastos.controller';
 import { ReportesController } from './reportes/reportes.controller';
 import { AuthController } from './auth/auth.controller';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: ['.prod.env', '.env'],
+      isGlobal: true,
+    }),
     ClientsModule.register([
       {
         name: 'SAECIOS_SERVICE',
         transport: Transport.TCP,
         options: {
-          port: 3002,
+          host: process.env.HOST_SAECIOS,
+          port: +process.env.PORT_SAECIOS,
         },
       },
       {
         name: 'PRODUCTOS_SERVICE',
         transport: Transport.TCP,
         options: {
-          port: 3003,
+          host: process.env.HOST_PRODUCTOS,
+          port: +process.env.PORT_PRODUCTOS,
         },
       },
       {
         name: 'PAGOS_SERVICE',
         transport: Transport.TCP,
         options: {
-          port: 3004,
+          host: process.env.HOST_PAGOS,
+          port: +process.env.PORT_PAGOS,
         },
       },
       {
         name: 'METODOS_PAGO_SERVICE',
         transport: Transport.TCP,
         options: {
-          port: 3005,
+          host: process.env.HOST_METODOS_PAGOS,
+          port: +process.env.PORT_METODOS_PAGOS,
         },
       },
       {
         name: 'GASTOS_SERVICE',
         transport: Transport.TCP,
         options: {
-          port: 3006,
+          host: process.env.HOST_GASTOS,
+          port: +process.env.PORT_GASTOS,
         },
       },
       {
         name: 'REPORTES_SERVICE',
         transport: Transport.TCP,
         options: {
-          port: 3007,
+          host: process.env.HOST_REPORTES,
+          port: +process.env.PORT_REPORTES,
         },
       },
       {
         name: 'AUTH_SERVICE',
         transport: Transport.TCP,
         options: {
-          port: 3008,
+          host: process.env.HOST_AUTH,
+          port: +process.env.PORT_AUTH,
         },
       },
     ]),

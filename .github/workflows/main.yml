@@ -10,7 +10,6 @@ jobs:
   build:
 
     runs-on: self-hosted
-
     strategy:
       matrix:
         node-version: [18.x]
@@ -23,9 +22,18 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm i
-    - run: nest build
-    - run: node dist/apps/api/main
-    #- run: npm ci
-    - run: npm run build --if-present
-    #- run: npm test
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Build image microservicios
+      uses: docker/build-push-action@v4
+      with:
+        push: false
+        tags: microservicios:latest
+    - uses: isbang/compose-action@v1.4.1
+      with:
+        compose-file: "./docker/docker-compose.yml"
+        down-flags: "--volumes"
+        services: |
+          api
+          saecios
+          mongo

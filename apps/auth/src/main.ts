@@ -1,18 +1,19 @@
 import { NestFactory } from '@nestjs/core';
+import { AuthModule } from './auth.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-import { PagosModule } from './pagos.module';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-    PagosModule,
+    AuthModule,
     {
       transport: Transport.TCP,
       options: {
         host: '0.0.0.0',
-        port: +process.env.PORT_PAGOS,
+        port: +process.env.PORT_AUTH,
       },
     },
   );
+
   await app.listen();
 }
 bootstrap();

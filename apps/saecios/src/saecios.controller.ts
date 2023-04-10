@@ -9,6 +9,10 @@ export class SaeciosController {
   async findAll() {
     return this.saeciosService.findAll();
   }
+  @MessagePattern('findOneByEmail')
+  async findOneByEmail(email) {
+    return this.saeciosService.findOneByEmail(email);
+  }
   @MessagePattern('saecios_findOneById')
   async findOneById(_id) {
     return this.saeciosService.findOneById(_id);

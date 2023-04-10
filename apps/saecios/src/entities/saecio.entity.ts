@@ -16,6 +16,9 @@ export class Saecio {
 
   @Prop({ unique: true })
   email: string;
+
+  @Prop({ required: true })
+  password: string;
 }
 
 export const SaecioSchema = SchemaFactory.createForClass(Saecio);

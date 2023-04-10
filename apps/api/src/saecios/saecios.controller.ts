@@ -1,6 +1,7 @@
 import { Controller, Get, Param, Post, Body, Inject } from '@nestjs/common';
 import { Delete } from '@nestjs/common/decorators';
 import { ClientProxy } from '@nestjs/microservices';
+import { lastValueFrom } from 'rxjs';
 
 @Controller('saecios')
 export class SaeciosController {
@@ -15,7 +16,14 @@ export class SaeciosController {
   }
   @Post()
   async create(@Body() saecio) {
-    return this.saeciosClient.send('saecios_create', saecio);
+    let res;
+    try {
+      res = lastValueFrom(this.saeciosClient.send('saecios_create', saecio));
+    } catch (err) {
+      console.log(err);
+      console.log('hola');
+    }
+    return res;
   }
   @Post(':id')
   async update(@Param('id') _id, @Body() saecio) {

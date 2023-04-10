@@ -4,24 +4,33 @@ import { PagosService } from './pagos.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PagoSchema } from './entities/pago.entity';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://127.0.0.1/hiberus'),
+    ConfigModule.forRoot({
+      envFilePath: ['.prod.env', '.env'],
+      isGlobal: true,
+    }),
+    MongooseModule.forRoot(
+      `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/hiberus`,
+    ),
     MongooseModule.forFeature([{ name: 'pago', schema: PagoSchema }]),
     ClientsModule.register([
       {
         name: 'SAECIOS_SERVICE',
         transport: Transport.TCP,
         options: {
-          port: 3002,
+          host: process.env.HOST_SAECIOS,
+          port: +process.env.PORT_SAECIOS,
         },
       },
       {
         name: 'METODOS_PAGO_SERVICE',
         transport: Transport.TCP,
         options: {
-          port: 3005,
+          host: process.env.HOST_METODOS_PAGO,
+          port: +process.env.PORT_METODOS_PAGO,
         },
       },
     ]),

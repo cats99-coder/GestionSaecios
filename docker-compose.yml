@@ -1,0 +1,26 @@
+version: '3'
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.api
+    user: node
+    ports:
+      - 3001:3001
+  saecios:
+    build: 
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.saecios
+    user: node
+    links:
+      - mongo
+      - api
+    depends_on: 
+      - api
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27015:27017
+    volumes:
+      - ./gestion-data:/data/db/

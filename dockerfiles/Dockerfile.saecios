@@ -1,0 +1,16 @@
+
+###################
+# BUILD FOR PRODUCTION
+###################
+
+FROM microservicios As build
+RUN echo node_modules
+USER node
+
+FROM node:18-alpine As production
+USER node
+COPY --chown=node:node --from=build node_modules /node_modules
+COPY --chown=node:node --from=build dist/apps/saecios .
+COPY --chown=node:node --from=build .env .env
+CMD [ "node", "main.js" ]
+
