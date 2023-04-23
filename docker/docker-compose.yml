@@ -3,14 +3,14 @@ services:
   api:
     build: 
       context: .
-      dockerfile: ./dockerfiles/Dockerfile.api
+      dockerfile: ../dockerfiles/Dockerfile.api
     user: node
     ports:
       - 3001:3001
   saecios:
     build: 
       context: .
-      dockerfile: ./dockerfiles/Dockerfile.saecios
+      dockerfile: ../dockerfiles/Dockerfile.saecios
     user: node
     links:
       - mongo
@@ -23,4 +23,4 @@ services:
     ports:
       - 27015:27017
     volumes:
-      - ./gestion-data:/data/db/
+      - ../gestion-data:/data/db/
