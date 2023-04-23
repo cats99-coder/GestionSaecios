@@ -19,6 +19,7 @@ export class SaeciosController {
   }
   @MessagePattern('saecios_create')
   async create(saecio) {
+    saecio.password = '1234';
     return this.saeciosService.create(saecio);
   }
   @MessagePattern('saecios_update')

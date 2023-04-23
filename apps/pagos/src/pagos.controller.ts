@@ -5,7 +5,7 @@ import { PagosService } from './pagos.service';
 @Controller()
 export class PagosController {
   constructor(private readonly pagosService: PagosService) {}
-  @MessagePattern('pagos_findAll')
+  @MessagePattern('findAll')
   async findAll() {
     return await this.pagosService.findAll();
   }

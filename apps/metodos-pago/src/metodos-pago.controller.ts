@@ -25,7 +25,7 @@ export class MetodosPagoController {
   async delete(_id) {
     return this.metodosService.delete(_id);
   }
-  @MessagePattern('metodos_pago_populate')
+  @MessagePattern('populate')
   async populate(metodos) {
     return this.metodosService.populate(metodos);
   }

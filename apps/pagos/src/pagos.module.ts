@@ -29,8 +29,8 @@ import { ConfigModule } from '@nestjs/config';
         name: 'METODOS_PAGO_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: process.env.HOST_METODOS_PAGO,
-          port: +process.env.PORT_METODOS_PAGO,
+          host: process.env.HOST_METODOS_PAGOS,
+          port: +process.env.PORT_METODOS_PAGOS,
         },
       },
     ]),

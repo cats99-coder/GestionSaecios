@@ -15,16 +15,14 @@ export class PagosService {
 
   async findAll() {
     let pagos: any = await this.pagoModel.find();
-    pagos = await lastValueFrom(
-      this.metodosClient.send('metodos_pago_populate', pagos),
-    );
+    console.log(pagos);
+    pagos = await lastValueFrom(this.metodosClient.send('populate', pagos));
+    console.log(pagos);
     return this.saeciosClient.send('saecios_populate', pagos);
   }
   async findOneById(_id) {
     let pago: any = await this.pagoModel.findById(_id);
-    pago = await lastValueFrom(
-      this.metodosClient.send('metodos_pago_populate', pago),
-    );
+    pago = await lastValueFrom(this.metodosClient.send('populate', pago));
     return this.saeciosClient.send('saecios_populate', pago);
   }
   async create(pago): Promise<Pago> {

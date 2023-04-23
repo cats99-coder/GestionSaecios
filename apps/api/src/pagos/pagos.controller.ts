@@ -14,7 +14,7 @@ export class PagosController {
   constructor(@Inject('PAGOS_SERVICE') private pagosClient: ClientProxy) {}
   @Get()
   async findAll() {
-    return this.pagosClient.send('pagos_findAll', {});
+    return this.pagosClient.send('findAll', {});
   }
   @Get(':id')
   async findOneById(@Param('id') _id) {

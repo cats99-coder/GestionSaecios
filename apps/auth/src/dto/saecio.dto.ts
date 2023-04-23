@@ -7,4 +7,6 @@ export interface Saecio {
   apellido2: string;
   email: string;
   password: string;
+  changePassword: boolean;
+  rol: 'admin' | 'user';
 }

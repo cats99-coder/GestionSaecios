@@ -12,9 +12,15 @@ import { GastosController } from './gastos/gastos.controller';
 import { ReportesController } from './reportes/reportes.controller';
 import { AuthController } from './auth/auth.controller';
 import { ConfigModule } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
+    JwtModule.register({
+      global: true,
+      secret: process.env.JWT,
+      signOptions: { expiresIn: '10s' },
+    }),
     ConfigModule.forRoot({
       envFilePath: ['.prod.env', '.env'],
       isGlobal: true,

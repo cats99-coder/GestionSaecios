@@ -5,9 +5,17 @@
     <title>Reporte - Gestión Suministros</title>
     <script src='https://cdn.tailwindcss.com'></script>
   </head>
-  <body class="">
-    {{#each productos}}
-      <div>{{this.nombre}}</div>
-    {{/each}}
+  <body class='flex flex-col h-full pb-5'>
+    <header class='text-white text-xl font-extrabold bg-blue-900 py-2 px-5'>
+      <img src="logo.png" alt="" width="50">
+    </header>
+    <main class='p-5 grow'>
+      {{> @partial-block }}
+    </main>
+    <footer class="flex justify-center">
+      <div class=" bg-blue-900 h-10 w-10 rounded-full flex justify-center items-center">
+        <span class="text-white font-bold">1</span>
+      </div>
+    </footer>
   </body>
 </html>

@@ -6,10 +6,13 @@ import {
   Inject,
   Param,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('gastos')
+@UseGuards(AuthGuard)
 export class GastosController {
   constructor(@Inject('GASTOS_SERVICE') private gastosClient: ClientProxy) {}
   @Get('proveedores')

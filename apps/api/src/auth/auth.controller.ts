@@ -1,7 +1,6 @@
 import {
   Controller,
   Inject,
-  Get,
   Post,
   Body,
   UnauthorizedException,

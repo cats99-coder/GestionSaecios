@@ -19,6 +19,12 @@ export class Saecio {
 
   @Prop({ required: true })
   password: string;
+
+  @Prop({ default: true })
+  changePassword: boolean;
+
+  @Prop({ default: 'user' })
+  rol: 'admin' | 'user';
 }
 
 export const SaecioSchema = SchemaFactory.createForClass(Saecio);

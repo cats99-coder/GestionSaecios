@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { Saecio } from '../dto/saecio.dto';
-import { Observable, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class SaeciosService {
