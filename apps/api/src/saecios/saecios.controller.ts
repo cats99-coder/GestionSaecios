@@ -15,7 +15,7 @@ import { Roles } from '../roles/roles.decorator';
 import { RolesGuard } from '../roles/roles.guard';
 
 @Controller('saecios')
-@UseGuards(AuthGuard, RolesGuard)
+//@UseGuards(AuthGuard, RolesGuard)
 export class SaeciosController {
   constructor(@Inject('SAECIOS_SERVICE') private saeciosClient: ClientProxy) {}
   @Get()

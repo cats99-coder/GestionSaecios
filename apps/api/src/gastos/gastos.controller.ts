@@ -12,7 +12,7 @@ import { ClientProxy } from '@nestjs/microservices';
 import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('gastos')
-@UseGuards(AuthGuard)
+//@UseGuards(AuthGuard)
 export class GastosController {
   constructor(@Inject('GASTOS_SERVICE') private gastosClient: ClientProxy) {}
   @Get('proveedores')
@@ -25,6 +25,9 @@ export class GastosController {
   }
   @Get()
   async findAll() {
+    console.log(
+      `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/hiberus`,
+    );
     return this.gastosClient.send('gastos_findAll', {});
   }
   @Get(':id')
