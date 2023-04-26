@@ -31,11 +31,4 @@ jobs:
           load: true
           tags: 'microservicios'
     - run: docker image ls
-    - uses: isbang/compose-action@v1.4.1
-      with:
-        compose-file: "./docker/docker-compose.yml"
-        down-flags: "--volumes"
-        services: |
-          api
-          saecios
-          mongo
+    - run: docker compose -f ./docker/docker-compose.yml up -d mongo
