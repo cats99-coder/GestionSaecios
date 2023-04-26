@@ -8,13 +8,11 @@ on:
     branches: [ "main" ]
 jobs:
   build:
-
     runs-on: self-hosted
     strategy:
       matrix:
         node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -32,6 +30,7 @@ jobs:
           push: false
           load: true
           tags: 'microservicios'
+    - run: docker image ls
     - uses: isbang/compose-action@v1.4.1
       with:
         compose-file: "./docker/docker-compose.yml"
