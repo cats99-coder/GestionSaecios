@@ -31,4 +31,4 @@ jobs:
           load: true
           tags: 'microservicios'
     - run: docker image ls
-    - run: docker compose -f ./docker/docker-compose.yml up -d mongo
+    - run: docker compose -f ./docker/docker-compose.yml up -d api mongo
