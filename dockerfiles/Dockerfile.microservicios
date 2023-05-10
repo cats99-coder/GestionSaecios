@@ -41,7 +41,13 @@ COPY --chown=node:node . .
 
 # Run the build command which creates the production bundle
 RUN npm run build api
+RUN npm run build auth
 RUN npm run build saecios
+RUN npm run build productos
+RUN npm run build gastos
+RUN npm run build pagos
+RUN npm run build reportes
+RUN npm run build metodos-pago
 
 # Set NODE_ENV environment variable
 ENV NODE_ENV production

@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
 jobs:
   build:
     runs-on: self-hosted
@@ -14,21 +14,20 @@ jobs:
         node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v4
-      with:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
           context: .
           file: ./dockerfiles/Dockerfile.microservicios
           push: false
           load: true
           tags: 'microservicios'
-    - run: docker image ls
-    - run: DOCKER_BUILDKIT=0 docker compose -f ./docker/docker-compose.yml up -d api mongo
+      - run: DOCKER_BUILDKIT=0 docker compose -f ./docker/docker-compose.yml up -d api auth saecios productos pagos gastos metodos-pago reportes mongo
