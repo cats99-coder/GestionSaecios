@@ -7,6 +7,16 @@ services:
     user: node
     ports:
       - 3001:3001
+  auth:
+    build: 
+      context: .
+      dockerfile: ../dockerfiles/Dockerfile.auth
+    user: node
+    links:
+      - mongo
+      - api
+    depends_on: 
+      - api
   saecios:
     build: 
       context: .
@@ -31,6 +41,36 @@ services:
     build: 
       context: .
       dockerfile: ../dockerfiles/Dockerfile.pagos
+    user: node
+    links:
+      - mongo
+      - api
+    depends_on: 
+      - api
+  gastos:
+    build: 
+      context: .
+      dockerfile: ../dockerfiles/Dockerfile.gastos
+    user: node
+    links:
+      - mongo
+      - api
+    depends_on: 
+      - api
+  metodos-pago:
+    build: 
+      context: .
+      dockerfile: ../dockerfiles/Dockerfile.metodos-pago
+    user: node
+    links:
+      - mongo
+      - api
+    depends_on: 
+      - api
+  reportes:
+    build: 
+      context: .
+      dockerfile: ../dockerfiles/Dockerfile.reportes
     user: node
     links:
       - mongo
