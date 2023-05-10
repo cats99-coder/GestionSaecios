@@ -1,12 +1,11 @@
-{{#> layout }}
-<section class='space-y-2'>
-  <div class='bg-blue-900 p-2 text-white rounded-md grid'>
-    <div>Nombre</div>
-  </div>
-  {{#each productos as |producto|}}
-    <div class='border-2 border-blue-900 px-2 py-1 rounded-md'>
-      <div>{{producto.nombre}}</div>
-    </div>
+{{#> Base }}
+  {{#each productos as |producto index|}}
+    {{#header index}}
+      {{> header}}
+    {{/header}}
+      {{producto.nombre}}
+    {{#footer index}}
+      {{> footer page=index}}
+    {{/footer}}
   {{/each}}
-</section>
-{{/layout}}
+{{/Base}}

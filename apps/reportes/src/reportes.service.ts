@@ -12,10 +12,23 @@ export class ReportesService {
     template: string,
   ): Promise<Array<number>> {
     //Preparar la base
-    const filePathBase = join(process.cwd(), 'templates', `Base.hbs`);
-    const htmlBase = await fs.readFile(filePathBase, { encoding: 'utf8' });
-    const compileBase = Handlebars.compile(htmlBase);
-    Handlebars.registerPartial('layout', compileBase);
+    const partials = ['head', 'header', 'footer', 'Base'];
+    partials.forEach(async (partial) => {
+      const filePathBase = join(process.cwd(), 'templates', `${partial}.hbs`);
+      const htmlBase = await fs.readFile(filePathBase, { encoding: 'utf8' });
+      const compileBase = Handlebars.compile(htmlBase);
+      Handlebars.registerPartial(partial, compileBase);
+    });
+    Handlebars.registerHelper("header", function(conditional, options) {
+      if (conditional%5==0) {
+        return options.fn(this);
+      }
+    });
+    Handlebars.registerHelper("footer", function(conditional, options) {
+      if (conditional%5==4) {
+        return options.fn(this);
+      }
+    });
     //Preparar contenido
     const filePath = join(process.cwd(), 'templates', `${template}.hbs`);
     const html = await fs.readFile(filePath, { encoding: 'utf8' });

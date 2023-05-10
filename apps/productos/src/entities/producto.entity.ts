@@ -12,6 +12,8 @@ export class Producto {
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'grupo-producto' })
   grupo: Grupo;
+  @Prop({ default: 'BASICA' })
+  tarifa: 'BASICA' | 'PREMIUM';
 }
 
 export const ProductoSchema = SchemaFactory.createForClass(Producto);

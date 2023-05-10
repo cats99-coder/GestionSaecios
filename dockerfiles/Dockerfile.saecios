@@ -4,7 +4,6 @@
 ###################
 
 FROM microservicios As build
-RUN echo node_modules
 USER node
 
 FROM node:18-alpine As production

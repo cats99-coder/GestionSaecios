@@ -3,14 +3,13 @@
 # BUILD FOR PRODUCTION
 ###################
 
-FROM microservicios:latest As build
+FROM microservicios As build
 USER node
 
 FROM node:18-alpine As production
 USER node
 COPY --chown=node:node --from=build node_modules /node_modules
-COPY --chown=node:node --from=build dist/apps/api .
+COPY --chown=node:node --from=build dist/apps/reportes .
 COPY --chown=node:node --from=build .env .env
-
-EXPOSE 3001
 CMD [ "node", "main.js" ]
+

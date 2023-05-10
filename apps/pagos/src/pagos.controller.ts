@@ -1,5 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
+import { Saecio } from './dto/saecio.dto';
 import { PagosService } from './pagos.service';
 
 @Controller()
@@ -14,7 +15,7 @@ export class PagosController {
     return this.pagosService.findOneById(_id);
   }
   @MessagePattern('pagos_create')
-  async create(saecio) {
+  async create(saecio: Saecio) {
     return this.pagosService.create(saecio);
   }
   @MessagePattern('pagos_update')

@@ -17,6 +17,26 @@ services:
       - api
     depends_on: 
       - api
+  productos:
+    build: 
+      context: .
+      dockerfile: ../dockerfiles/Dockerfile.productos
+    user: node
+    links:
+      - mongo
+      - api
+    depends_on: 
+      - api
+  pagos:
+    build: 
+      context: .
+      dockerfile: ../dockerfiles/Dockerfile.pagos
+    user: node
+    links:
+      - mongo
+      - api
+    depends_on: 
+      - api
   mongo:
     image: mongo
     restart: always
